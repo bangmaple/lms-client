@@ -1,0 +1,39 @@
+<app-sidebar (isSidebarToggled)="toggleSidebar()" [isSidebarToggled]="isSidebarToggled"></app-sidebar>
+<!--<div style="margin-bottom: 10px" *ngIf="!isSidebarToggled">-->
+
+<!--</div>-->
+
+<div *ngIf="isSidebarToggled" style="margin-left: 320px">
+    <p-menubar [model]="items">
+        <ng-template pTemplate="start">
+            <div style="margin-right: 10px">
+                <button (click)="toggleSidebar()" pButton
+                        style="margin-right: 5px;"
+                        icon="pi pi-align-justify"
+                        class="p-button-secondary p-button-outlined"></button>
+                <span style="font-size: 1.25rem;">
+        <i style="font-size: 1.25rem;" class="pi pi-globe p-mr-2" ></i>BangMaple Quiz
+      </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="end">
+            <button pButton icon="pi pi-power-off" class="p-button-outlined"></button>
+        </ng-template>
+    </p-menubar>
+    <router-outlet></router-outlet>
+</div>
+<div *ngIf="!isSidebarToggled">
+    <p-menubar [model]="items">
+        <ng-template pTemplate="start">
+            <button (click)="toggleSidebar()" pButton
+                    style="margin-right: 5px;"
+                    icon="pi pi-align-justify"
+                    class="p-button-secondary p-button-outlined"></button>
+            <span style="font-size: 1.25rem;">
+        <i style="font-size: 1.25rem;" class="pi pi-globe p-mr-2" ></i>BangMaple Quiz
+      </span>
+
+        </ng-template>
+    </p-menubar>
+    <router-outlet></router-outlet>
+</div>

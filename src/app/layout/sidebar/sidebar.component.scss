@@ -1,0 +1,32 @@
+.ui-panelmenu .ui-panelmenu-content {
+  border: 1px solid #f8f9fa !important;
+}
+
+.ui-panelmenu .ui-panelmenu-header > a {
+  border: 1px solid #f8f9fa !important;
+  background-color: #f8f9fa !important;
+  padding: 1.5em 1.8em !important;
+  color: #797777 !important;
+}
+
+.ui-panelmenu .ui-panelmenu-header > a:focus {
+  box-shadow: none !important;
+}
+
+.ui-panelmenu-header.ui-state-active > a {
+  // background-color: #e10101 !important;
+  color: black !important;
+  border-right: 5px solid red !important;
+}
+
+.ui-panelmenu .ui-panelmenu-icon {
+  float: right !important;
+}
+
+.ui-panelmenu .ui-submenu-list {
+  margin: 1.5em !important;
+}
+
+.ui-panelmenu .ui-panelmenu-content .ui-menuitem .ui-menuitem-link {
+  padding: 1em 0.8em !important;
+}

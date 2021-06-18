@@ -1,0 +1,37 @@
+<p-dialog [visible]="true" [modal]="true" [baseZIndex]="99999" [responsive]="true" [style]="{width: '45vw'}">
+    Bài kiểm tra này được khoá vui lòng nhập mật khẩu để tiếp tục!
+    <div class="p-d-flex p-jc-between p-mt-4">
+        <div class="p-grid p-col-12">
+            <div class="p-col-8">
+                                    <span class="p-float-label p-input-icon-left">
+            <i class="pi pi-lock"></i>
+            <input id="float-input" type="password" pInputText>
+            <label for="float-input">Mật khẩu</label>
+        </span>
+            </div>
+            <div class="p-col-4">
+                <button pButton>Mở khoá bài kiểm tra</button>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+<p-card class="p-shadow-24">
+        <p-skeleton height="2rem" width="50rem"></p-skeleton>
+    <p-skeleton height="1.5rem" width="30rem"></p-skeleton>
+    <p-skeleton height="1.5rem" width="30rem"></p-skeleton>
+    <p-skeleton height="1.5rem" width="30rem"></p-skeleton>
+    <p-skeleton height="1.5rem" width="30rem"></p-skeleton>
+
+
+    <ng-template pTemplate="footer">
+        <div class="p-d-flex p-jc-between">
+            <button pButton class="p-button-outlined p-button-info" icon="pi pi-arrow-left"
+                    label="Câu hỏi trước"></button>
+            <button pButton class="p-button-outlined p-button-info" icon="pi pi-arrow-right"
+                    label="Câu kế tiếp"></button>
+        </div>
+
+
+    </ng-template>
+</p-card>
+
