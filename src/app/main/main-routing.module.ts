@@ -4,6 +4,8 @@ import {HomeComponent} from "./home/home.component";
 import {InexamComponent} from "./inexam/inexam.component";
 import {MainComponent} from "./main.component";
 import {QuestionsManagementComponent} from "./questions-management/questions-management.component";
+import {AuthGuard} from "../guards/auth.guard";
+import {UsersManagementComponent} from "./users-management/users-management.component";
 
 const routes: Routes = [
   {
@@ -14,7 +16,7 @@ const routes: Routes = [
         path: 'home',
         pathMatch: 'full',
         component: HomeComponent,
-        canActivate:
+        canActivate: [AuthGuard]
       },
       {
         path: '',
@@ -23,11 +25,18 @@ const routes: Routes = [
       },
       {
         path: 'exam',
-        component: InexamComponent
+        component: InexamComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'questionsManagement',
-        component: QuestionsManagementComponent
+        component: QuestionsManagementComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'usersManagement',
+        component: UsersManagementComponent,
+        canActivate: [AuthGuard]
       }
     ]
   }

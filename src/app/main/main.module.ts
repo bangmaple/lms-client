@@ -27,11 +27,13 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
 import {DialogService} from "primeng/dynamicdialog";
 import {InputTextareaModule} from "primeng/inputtextarea";
+import { UsersManagementComponent } from './users-management/users-management.component';
+import { AddNewUserDialogComponent } from './users-management/add-new-user-dialog/add-new-user-dialog.component';
 
 
 @NgModule({
     providers: [ConfirmationService, DialogService],
-    declarations: [MainComponent, SidebarComponent, HomeComponent, InexamComponent, QuestionsManagementComponent],
+    declarations: [MainComponent, SidebarComponent, HomeComponent, InexamComponent, QuestionsManagementComponent, UsersManagementComponent, AddNewUserDialogComponent],
     imports: [
         CommonModule,
         PanelMenuModule,

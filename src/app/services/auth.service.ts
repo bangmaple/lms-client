@@ -13,7 +13,7 @@ export class AuthService {
   private currentUser$ = new BehaviorSubject<User>({id: 0});
   public currentUser = this.currentUser$.asObservable().pipe(distinctUntilChanged());
 
-  private isAuthenticated$ = new ReplaySubject<boolean>(1);
+  private isAuthenticated$ = new BehaviorSubject<boolean>(false);
   public isAuthenticated = this.isAuthenticated$.asObservable();
 
   public forgotAccount!: {email: string};
@@ -39,6 +39,8 @@ export class AuthService {
   setAuth(user: User): void {
     this.jwtService.saveCurrentUserId(user);  // Save JWT sent from server in localstorage
     this.currentUser$.next(user);
+    console.log(user);
+
     this.isAuthenticated$.next(true);
   }
 
