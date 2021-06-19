@@ -1,12 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {InexamComponent} from "./inexam/inexam.component";
+
 
 const routes: Routes = [
   {
-    path: 'exam',
+    path: 'user',
+    // @ts-ignore
+    loadChildren: () => import('./main/main.module').then(m => m.MainModule)
+  },
+  {
+    path: 'auth',
+    // @ts-ignore
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: '',
     pathMatch: 'full',
-    component: InexamComponent
+    redirectTo: 'auth'
   }
 ];
 

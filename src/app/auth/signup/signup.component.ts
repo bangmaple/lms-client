@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
+import {AuthValidatorService} from "../../validators/auth-validator.service";
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+
+  style: any = {
+    'height': '500px',
+    'display': 'grid',
+    'place-items': 'center'
+  };
+
+  username: string;
+  password: string;
+  email: string;
+  rePassword: string;
+
 
   ngOnInit(): void {
+    this.style.height = window.innerHeight + 'px';
+    console.log(this.style.height);
   }
 
+  constructor(private readonly validator: AuthValidatorService) {
+    this.username = '';
+    this.password = '';
+  }
+
+
+  @HostListener('window:resize')
+  onChangeScreenSize() {
+
+  }
+
+
+  attemptSignin() {
+    if (this.validator.validateUser(this.username, this.password)) {
+
+    }
+  }
 }

@@ -10,13 +10,13 @@ const PASSWORD = 'mật khẩu';
 const EMAIL = 'địa chỉ e-mail';
 
 export const USERNAME_CANNOT_BE_BLANK: Message = {
-    icon: ERROR,
+    severity: ERROR,
     summary: LOGIN_FAILED,
     detail: CANNOT_BE_BLANK + USERNAME,
 };
 
 export const PASSWORD_CANNOT_BE_BLANK: Message = {
-    icon: ERROR,
+    severity: ERROR,
     summary: LOGIN_FAILED,
     detail: CANNOT_BE_BLANK + PASSWORD,
 };

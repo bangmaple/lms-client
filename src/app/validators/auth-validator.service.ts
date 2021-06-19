@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {MessageService} from "primeng/api";
+import {PASSWORD_CANNOT_BE_BLANK, USERNAME_CANNOT_BE_BLANK} from "./validator-messages";
 
 @Injectable({
     providedIn: 'root'
@@ -23,11 +24,7 @@ export class AuthValidatorService {
 
     public validateUsername(username: string): boolean {
         if (username.trim().length === 0) {
-          this.msgService.add({
-            icon: 'error',
-            summary: 'Thất bại khi đăng nhập',
-            detail: 'Vui lòng không được để trống tên đăng nhập'
-          });
+          this.msgService.add(USERNAME_CANNOT_BE_BLANK);
             return false;
         }
         return true;
@@ -35,7 +32,7 @@ export class AuthValidatorService {
 
     private validatePassword(password: string): boolean {
         if (password.trim().length === 0) {
-          this.msgService.add();
+          this.msgService.add(PASSWORD_CANNOT_BE_BLANK);
             return false;
         }
         return true;

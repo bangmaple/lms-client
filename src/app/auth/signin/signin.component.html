@@ -1,1 +1,42 @@
-<p>signin works!</p>
+<p-toast [baseZIndex]="99999"></p-toast>
+
+<div [style]="style">
+    <p-card [style]="{width: '55vh'}" class="p-fluid p-grid">
+        <h1 class="p-d-flex p-jc-center" style="margin-top: -20px;">
+            BangMaple Quiz
+        </h1>
+        <div class="p-field p-col-12">
+            <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-user"></i>
+                    </span>
+                <span class="p-float-label">
+                        <input type="text" id="username" pInputText [(ngModel)]="username">
+                        <label for="username">Username</label>
+                    </span>
+            </div>
+        </div>
+        <div class="p-field p-col-12">
+            <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-lock"></i>
+                    </span>
+                <span class="p-float-label">
+                        <input type="password" id="password" pInputText [(ngModel)]="password">
+                        <label for="password">Password</label>
+                    </span>
+            </div>
+            <div class="p-mt-4">
+                <button pButton icon="pi pi-sign-in" label="Đăng nhập" (click)="attemptSignin()"></button>
+            </div>
+            <div class="p-d-flex p-jc-between p-mt-4 p-mb-1">
+                <a style="text-decoration: none; margin-bottom: 10px;" [routerLink]="['/auth/signup']">Đăng kí tài khoản</a>
+                <a style="text-decoration: none;" [routerLink]="['/auth/forgotpwd']">Quên mật khẩu?</a>
+            </div>
+            <p-divider></p-divider>
+            <div class="p-mt-4" style="margin-bottom: -25px;">
+                <button pButton icon="pi pi-google" label="Đăng nhập bằng Google"></button>
+            </div>
+        </div>
+    </p-card>
+</div>
