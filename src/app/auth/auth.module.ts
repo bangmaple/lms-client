@@ -13,13 +13,9 @@ import {DividerModule} from "primeng/divider";
 import {AuthValidatorService} from "../validators/auth-validator.service";
 import {MessageService} from "primeng/api";
 import {ToastModule} from "primeng/toast";
-import {AuthService} from "../services/auth.service";
-import {ApiService} from "../services/api.service";
-import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
-
 
 @NgModule({
-  providers: [AuthValidatorService, MessageService, AuthService, ApiService],
+  providers: [AuthValidatorService, MessageService],
   declarations: [SigninComponent, SignupComponent, ForgotpwdComponent],
   imports: [
     CommonModule,
@@ -31,7 +27,6 @@ import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
     DividerModule,
     ToastModule,
     ReactiveFormsModule,
-      HttpClientModule
   ]
 })
 export class AuthModule { }

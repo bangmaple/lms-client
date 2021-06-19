@@ -23,9 +23,11 @@ export class JwtInterceptor implements HttpInterceptor {
       return next.handle(req);
     } else {
       return next.handle(request).pipe(
+
           tap(evt => {
             if (evt instanceof HttpResponse) {
               let returnToken = evt.headers.get(JwtInterceptor.AUTHORIZATION_HEADER);
+              console.log(`token: ${returnToken}`);
               if (returnToken) {
                 returnToken = returnToken.substring(7);
                 this.jwtService.saveToken(returnToken)

@@ -7,7 +7,8 @@ import {ProductService} from "../services/productservice";
 @Component({
   selector: 'app-questions-management',
   templateUrl: './questions-management.component.html',
-  styleUrls: ['./questions-management.component.css']
+  styleUrls: ['./questions-management.component.css'],
+  providers: [ProductService]
 })
 export class QuestionsManagementComponent implements OnInit {
 
@@ -22,6 +23,7 @@ export class QuestionsManagementComponent implements OnInit {
   submitted: boolean;
 
   statuses: any[];
+  Delete: any;
 
   constructor(private productService: ProductService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
 

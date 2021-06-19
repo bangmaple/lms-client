@@ -26,6 +26,7 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
 import {DialogService} from "primeng/dynamicdialog";
+import {InputTextareaModule} from "primeng/inputtextarea";
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {DialogService} from "primeng/dynamicdialog";
         DropdownModule,
         RadioButtonModule,
         InputNumberModule,
-        ConfirmDialogModule
+        ConfirmDialogModule,
+        InputTextareaModule
     ]
 })
 export class MainModule {

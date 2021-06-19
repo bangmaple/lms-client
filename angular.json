@@ -70,11 +70,11 @@
             "configurations": {
               "production": {
                 "browserTarget": "primeng-quickstart-cli:build:production",
-                  "proxyConfig": "src/proxy.conf.json"
+                  "proxyConfig": "./proxy.conf.json"
               },
               "development": {
                 "browserTarget": "primeng-quickstart-cli:build:development",
-                "proxyConfig": "src/proxy.conf.json"
+                "proxyConfig": "./proxy.conf.json"
 
               }
             },

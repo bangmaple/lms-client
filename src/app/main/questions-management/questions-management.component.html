@@ -1,4 +1,4 @@
-<p-toolbar styleClass="p-mb-4">
+<p-toolbar styleClass="p-mb-4 p-mt-2">
     <ng-template pTemplate="left">
         <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
         <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
@@ -17,7 +17,7 @@
             <h5 class="p-m-0">Manage Products</h5>
             <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                <input pInputText type="text" (input)="dt.filterGlobal($event.target, 'contains')" placeholder="Search..." />
             </span>
         </div>
     </ng-template>

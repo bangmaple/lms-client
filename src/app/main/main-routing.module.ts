@@ -13,7 +13,8 @@ const routes: Routes = [
       {
         path: 'home',
         pathMatch: 'full',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate:
       },
       {
         path: '',
