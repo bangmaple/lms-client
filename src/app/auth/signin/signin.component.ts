@@ -1,11 +1,13 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {AuthValidatorService} from "../../validators/auth-validator.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../services/auth.service";
+import {HttpClient} from "@angular/common/http";
+import {ApiService} from "../../services/api.service";
 
 @Component({
     selector: 'app-signin',
     templateUrl: './signin.component.html',
-    styleUrls: ['./signin.component.css']
+    styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent implements OnInit {
 
@@ -24,7 +26,8 @@ export class SigninComponent implements OnInit {
         console.log(this.style.height);
     }
 
-    constructor(private readonly validator: AuthValidatorService) {
+    constructor(private readonly validator: AuthValidatorService,
+                private readonly authService: AuthService) {
         this.username = '';
         this.password = '';
     }
@@ -37,7 +40,7 @@ export class SigninComponent implements OnInit {
 
     attemptSignin() {
         if (this.validator.validateUser(this.username, this.password)) {
-
+            this.authService.attemptAuth({username: this.username, password: this.password}).subscribe(console.warn);
         }
     }
 }

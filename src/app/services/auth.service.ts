@@ -55,7 +55,7 @@ export class AuthService {
     this.isAuthenticated$.next(false);
   }
 
-  attemptAuth(credentials: {email: string, pwd: string}): Observable<User> {
+  attemptAuth(credentials: {username: string, password: string}): Observable<User> {
     return this.apiService.post('/auth/signin', credentials).pipe(tap( (user: User) => this.setAuth(user)));
   }
 
