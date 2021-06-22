@@ -1,4 +1,6 @@
 <app-add-new-user-dialog></app-add-new-user-dialog>
+<app-view-detail-user-dialog></app-view-detail-user-dialog>
+<app-update-selected-user></app-update-selected-user>
 <p-toolbar styleClass="p-mb-4 p-mt-2">
     <ng-template pTemplate="left">
         <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
@@ -10,7 +12,7 @@
     </ng-template>
 </p-toolbar>
 
-<p-table #dt [value]="products" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']"
+<p-table #dt [value]="users" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']"
          [(selection)]="selectedProducts" [rowHover]="true" dataKey="id"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
     <ng-template pTemplate="caption">
@@ -27,31 +29,35 @@
             <th style="width: 3rem">
                 <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
             </th>
-            <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-            <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
-            <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
+            <th pSortableColumn="name">Tên đăng nhập <p-sortIcon field="name"></p-sortIcon></th>
+            <th pSortableColumn="price">E-mail <p-sortIcon field="price"></p-sortIcon></th>
+            <th pSortableColumn="category">Quyền hạn <p-sortIcon field="category"></p-sortIcon></th>
             <th pSortableColumn="rating">Reviews <p-sortIcon field="rating"></p-sortIcon></th>
             <th></th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" let-user>
         <tr>
             <td>
-                <p-tableCheckbox [value]="product"></p-tableCheckbox>
+                <p-tableCheckbox [value]="user"></p-tableCheckbox>
             </td>
-            <td>{{product.name}}</td>
-            <td>{{product.price | currency:'USD'}}</td>
-            <td>{{product.category}}</td>
-            <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.role === 'ROLE_ADMIN' ? 'Quản trị viên' : 'Người dùng'}}</td>
             <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editProduct(product)"></button>
-                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(product)"></button>
+                {{user.fullname}}
+                <!--<p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
+            </td>
+            <td>
+                <button pButton pRipple icon="pi pi-info" class="p-button-rounded p-button-info p-mr-2" (click)="showMoreUserInfo(user.id)"></button>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editUser(user.id)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(user)"></button>
             </td>
         </tr>
     </ng-template>
     <ng-template pTemplate="summary">
         <div class="p-d-flex p-ai-center p-jc-between">
-            In total there are {{products ? products.length : 0 }} products.
+            In total there are {{users ? users.length : 0 }} products.
         </div>
     </ng-template>
 </p-table>

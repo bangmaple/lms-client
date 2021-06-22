@@ -12,7 +12,11 @@ export class UsersService {
   constructor(private readonly apiService: ApiService,
               private readonly jwtService: JwtService) { }
 
-  getAllUsers(): Observable<UserModel> {
+  getAllUsers(): Observable<UserModel[]> {
     return this.apiService.get('/users');
+  }
+
+  getUserById(id: number): Observable<UserModel> {
+    return this.apiService.get(`/users/${id}`);
   }
 }

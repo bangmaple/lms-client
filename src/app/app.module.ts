@@ -10,23 +10,23 @@ import {ToastModule} from "primeng/toast";
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import {DividerModule} from "primeng/divider";
 import {CardModule} from "primeng/card";
+import { RoleConverterPipe } from './pipes/role-converter.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NotFoundComponent,
-
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ToastModule,
-    DividerModule,
-    CardModule,
-  ],
-  providers: [HttpInterceptorProviders, MessageService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NotFoundComponent,
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ToastModule,
+        DividerModule,
+        CardModule,
+    ],
+    providers: [HttpInterceptorProviders, MessageService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

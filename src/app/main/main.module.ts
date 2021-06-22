@@ -29,11 +29,21 @@ import {DialogService} from "primeng/dynamicdialog";
 import {InputTextareaModule} from "primeng/inputtextarea";
 import { UsersManagementComponent } from './users-management/users-management.component';
 import { AddNewUserDialogComponent } from './users-management/add-new-user-dialog/add-new-user-dialog.component';
+import { ViewDetailUserDialogComponent } from './users-management/view-detail-user-dialog/view-detail-user-dialog.component';
+import {AppModule} from "../app.module";
+import {JsonDatePipe} from "../pipes/json-date.pipe";
+import {RoleConverterPipe} from "../pipes/role-converter.pipe";
+import {CheckboxModule} from "primeng/checkbox";
+import { UpdateSelectedUserComponent } from './users-management/update-selected-user/update-selected-user.component';
+import {CalendarModule} from "primeng/calendar";
 
 
 @NgModule({
     providers: [ConfirmationService, DialogService],
-    declarations: [MainComponent, SidebarComponent, HomeComponent, InexamComponent, QuestionsManagementComponent, UsersManagementComponent, AddNewUserDialogComponent],
+    declarations: [MainComponent, SidebarComponent, HomeComponent, InexamComponent,
+        QuestionsManagementComponent, UsersManagementComponent, AddNewUserDialogComponent,
+        ViewDetailUserDialogComponent,
+    JsonDatePipe, RoleConverterPipe, UpdateSelectedUserComponent],
     imports: [
         CommonModule,
         PanelMenuModule,
@@ -54,7 +64,9 @@ import { AddNewUserDialogComponent } from './users-management/add-new-user-dialo
         RadioButtonModule,
         InputNumberModule,
         ConfirmDialogModule,
-        InputTextareaModule
+        InputTextareaModule,
+        CheckboxModule,
+        CalendarModule,
     ]
 })
 export class MainModule {

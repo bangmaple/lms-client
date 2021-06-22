@@ -1,0 +1,99 @@
+<p-dialog [(visible)]="_isViewDetailDialogShown" [style]="{width: '50vw'}" header="Thông tin chi tiết người dùng"
+          [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+
+        <div class="p-d-flex p-mt-4 p-col-12">
+            <div class="p-field p-col-4">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-user"></i>
+                    </span>
+                    <span class="p-float-label">
+                        <input type="text" id="id" pInputText [(ngModel)]="user.id" readonly>
+                        <label for="id">Mã người dùng</label>
+                    </span>
+                </div>
+            </div>
+            <div class="p-field p-col-8">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-user"></i>
+                    </span>
+                    <span class="p-float-label">
+                        <input type="text" id="username" pInputText [(ngModel)]="user.username" readonly>
+                        <label for="username">Tên tài khoản</label>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-d-flex p-col-12">
+            <div class="p-field p-col-7">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-envelope"></i>
+                    </span>
+                    <span class="p-float-label">
+                        <input type="email" id="email" pInputText [(ngModel)]="user.email" readonly>
+                        <label for="email">Tài khoản e-mail</label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="p-field p-col-5">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-id-card"></i>
+                    </span>
+                    <span class="p-float-label">
+                        <input type="text" id="fullname" pInputText [value]="user.fullname" readonly>
+                        <label for="fullname">Họ và tên</label>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-d-flex p-col-12">
+            <div class="p-field p-col-3">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-calendar"></i>
+                    </span>
+                    <span class="p-float-label">
+                        <input type="text" id="birthdate" pInputText
+                               [value]="user.birthdate | jsonDate | date: 'dd/MM/yyyy'" readonly>
+                        <label for="birthdate">Ngày sinh</label>
+                    </span>
+                </div>
+            </div>
+            <div class="p-field p-col-6">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-key"></i>
+                    </span>
+                    <span class="p-float-label">
+                        <input type="text" id="role" pInputText [value]="user.role | roleConverter" readonly>
+                        <label for="role">Quyền hạn</label>
+                    </span>
+                </div>
+            </div>
+            <div class="p-field p-col-3">
+                <p-checkbox [readonly]="true" [style]="{'margin-top': '10px', 'margin-right': '5px'}" [ngModel]="user.isDisabled"
+                            [binary]="true"></p-checkbox>
+                Vô hiệu hoá
+            </div>
+        </div>
+
+        <div class="p-d-flex p-col-12" style="margin-top: -20px; margin-bottom: -30px;">
+            <div class="p-field p-col-12">
+                <label for="description">Chú thích</label>
+                <textarea id="description" pInputTextarea readonly rows="3" cols="20"></textarea>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Đóng" icon="pi pi-times" class="p-button-text"
+                (click)="hideViewDetailUserDialog()"></button>
+    </ng-template>
+</p-dialog>

@@ -3,6 +3,11 @@ import {Product} from "../domain/product";
 import {ProductService} from "../services/productservice";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {AddNewUserDialogComponent} from "./add-new-user-dialog/add-new-user-dialog.component";
+import {UsersService} from "../../services/users.service";
+import UserModel from "./users.model";
+import {ViewDetailUserDialogComponent} from "./view-detail-user-dialog/view-detail-user-dialog.component";
+import {map, tap} from "rxjs/operators";
+import {UpdateSelectedUserComponent} from "./update-selected-user/update-selected-user.component";
 
 @Component({
   selector: 'app-users-management',
@@ -14,6 +19,7 @@ export class UsersManagementComponent implements OnInit {
 
 
   products: Product[];
+  users: UserModel[];
 
   product: Product;
 
@@ -27,9 +33,19 @@ export class UsersManagementComponent implements OnInit {
   @ViewChild(AddNewUserDialogComponent)
   private addNewUserDialog: AddNewUserDialogComponent;
 
-  constructor(private productService: ProductService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
+  @ViewChild(ViewDetailUserDialogComponent)
+  private viewDetailUserDialog: ViewDetailUserDialogComponent;
+
+  @ViewChild(UpdateSelectedUserComponent)
+  private updateSelectedUserDialog: UpdateSelectedUserComponent;
+
+  constructor(private productService: ProductService,
+              private messageService: MessageService,
+              private confirmationService: ConfirmationService,
+              private readonly usersService: UsersService) { }
 
   ngOnInit() {
+    this.usersService.getAllUsers().toPromise().then(data => this.users = data);
     this.productService.getProducts().then(data => this.products = data);
 
     this.statuses = [
@@ -99,4 +115,19 @@ export class UsersManagementComponent implements OnInit {
   }
 
 
+  showMoreUserInfo(id: string): void {
+    this.usersService.getUserById(parseInt(id, 10)).subscribe((user => {
+      console.log(user);
+      this.viewDetailUserDialog.user = user;
+      this.viewDetailUserDialog._isViewDetailDialogShown = true;
+    }));
+
+  }
+
+  editUser(id: string): void {
+    this.usersService.getUserById(parseInt(id, 10)).subscribe((user => {
+      this.updateSelectedUserDialog.user = user;
+      this.updateSelectedUserDialog._isUpdateUserDialogShown = true;
+    }));
+  }
 }
